@@ -6,23 +6,20 @@ import "@staticcms/core/dist/main.css";
 
 const CMSView = () => {
   useEffect(() => {
-    const root = document.getElementById("cms");
-    if (root) {
-      return;
+    if (typeof window !== `undefined`) {
+      CMS.init({ config });
+
+      CMS.registerPreviewStyle("/styles/content.module.css");
+
+      CMS.registerAdditionalLink({
+        id: "events",
+        title: "Events (Google Calendar)",
+        data: "https://calendar.google.com/",
+        options: {
+          icon: "calendar-days",
+        },
+      });
     }
-
-    CMS.init({ config });
-
-    CMS.registerPreviewStyle("/styles/content.module.css");
-
-    CMS.registerAdditionalLink({
-      id: "events",
-      title: "Events (Google Calendar)",
-      data: "https://calendar.google.com/",
-      options: {
-        icon: "calendar-days",
-      },
-    });
   }, []);
 
   return (
@@ -33,7 +30,7 @@ const CMSView = () => {
   );
 };
 
-export const Head = ({ location, params, data, pageContext }) => (
+export const Head = () => (
   <>
     <title>test</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
@@ -41,5 +38,7 @@ export const Head = ({ location, params, data, pageContext }) => (
     <meta name="twitter:url" />
   </>
 );
+
+CMSView.displayName = "CMSView";
 
 export default CMSView;
