@@ -1,8 +1,9 @@
 const config = {
   backend: {
-    name: "git-gateway",
+    name: "test-repo",
     branch: "main", // Branch to update (optional; defaults to main)
   },
+  local_backend: true,
   media_folder: "/public/files",
   public_folder: "/files",
   slug: {
@@ -20,9 +21,9 @@ const config = {
   },
   collections: [
     {
-      name: "church",
-      label: "Church Details",
-      icon: "church",
+      name: "page",
+      label: "Pages",
+
       delete: false,
       editor: {
         preview: true,
@@ -30,87 +31,16 @@ const config = {
       },
       files: [
         {
-          name: "church_details",
-          label: "General Church Details",
-          file: "content/church_details.json",
-          description: "General church details",
+          name: "home",
+          label: "Home",
+          file: "src/pages/home/index.md",
+          description: "Home page informations",
           fields: [
             {
-              name: "name",
-              label: "Name",
-              widget: "string",
-            },
-            {
-              name: "address",
-              label: "Address",
-              widget: "string",
-            },
-            {
-              name: "city",
-              label: "City",
-              widget: "string",
-            },
-            {
-              name: "state",
-              label: "State",
-              widget: "string",
-            },
-            {
-              name: "zipcode",
-              label: "Zip Code",
-              widget: "string",
-            },
-            {
-              name: "phone",
-              label: "Phone Number",
-              widget: "string",
-            },
-            {
-              name: "additional_phones",
-              label: "Additional Phone Numbers",
-              widget: "list",
-              required: false,
-              fields: [
-                {
-                  name: "name",
-                  label: "Name",
-                  widget: "string",
-                },
-                {
-                  name: "phone",
-                  label: "Phone Number",
-                  widget: "string",
-                },
-              ],
-            },
-            {
-              name: "email",
-              label: "Email",
-              widget: "string",
-            },
-            {
-              name: "additional_emails",
-              label: "Additional Emails",
-              widget: "list",
-              required: false,
-              fields: [
-                {
-                  name: "name",
-                  label: "Name",
-                  widget: "string",
-                },
-                {
-                  name: "email",
-                  label: "Email",
-                  widget: "string",
-                },
-              ],
-            },
-            {
-              name: "contacts",
-              label: "Contacts",
-              widget: "list",
-              required: false,
+              name: "section1",
+              label: "Section 1",
+              // summary: "{{fields.title}}: {{fields.description}}",
+              widget: "object",
               fields: [
                 {
                   name: "title",
@@ -118,92 +48,63 @@ const config = {
                   widget: "string",
                 },
                 {
-                  name: "name",
-                  label: "Name",
-                  widget: "string",
-                },
-              ],
-            },
-            {
-              name: "facebook_page",
-              label: "Facebook Page",
-              widget: "string",
-            },
-            {
-              name: "google_map_location",
-              label: "Google Map Embed URL",
-              widget: "string",
-            },
-            {
-              name: "online_giving_url",
-              label: "Online Giving URL",
-              widget: "string",
-            },
-            {
-              name: "mission_statement",
-              label: "Mission Statement",
-              widget: "text",
-            },
-            {
-              name: "vision_statement",
-              label: "Vision Statement",
-              widget: "text",
-            },
-          ],
-        },
-        {
-          name: "times",
-          label: "Mass & Confession Times",
-          file: "content/times.json",
-          description: "Mass & Confession Times",
-          editor: {
-            size: "half",
-            preview: true,
-            frame: false,
-          },
-          fields: [
-            {
-              name: "times",
-              label: "Times",
-              widget: "times",
-            },
-          ],
-        },
-        {
-          name: "staff",
-          label: "Staff",
-          file: "content/staff.json",
-          description: "Parish staff",
-          media_folder: "/public/staff",
-          public_folder: "/staff",
-          fields: [
-            {
-              name: "staff",
-              label: "Staff",
-              widget: "list",
-              summary: "{{fields.name}} - {{field.image}}",
-              fields: [
-                {
-                  name: "name",
-                  label: "Name",
+                  name: "description",
+                  label: "Description",
                   widget: "string",
                 },
                 {
-                  name: "title",
-                  label: "Title",
-                  widget: "string",
-                },
-                {
-                  name: "picture",
-                  label: "Picture",
+                  name: "backgoundImage",
+                  label: "Background Image",
                   widget: "image",
-                  media_folder: "/public/staff",
-                  public_folder: "/staff",
-                  media_library: {
-                    max_file_size: 10240000,
-                    folder_support: false,
-                  },
                 },
+                {
+                  name: "buttonTitle1",
+                  label: "Button title AirBnb",
+                  widget: "string",
+                },
+                {
+                  name: "buttonTitle2",
+                  label: "Button title Shop",
+                  widget: "string",
+                },
+              ],
+            },
+            {
+              name: "section2",
+              label: "Section 2",
+              widget: "object",
+              fields: [
+                {
+                  name: "guesthouseTitle",
+                  label: "Guest house title",
+                  widget: "string",
+                },
+                {
+                  name: "guesthouseDescription",
+                  label: "Guest house sescription",
+                  widget: "text",
+                },
+                {
+                  name: "guesthouseImage",
+                  label: "Guest house image",
+                  widget: "image",
+                },
+
+                // {
+                //   name: "guesthouseTitle",
+                //   label: "Guest house title",
+                //   widget: "string",
+                // },
+                // {
+                //   name: "guesthouseDescription",
+                //   label: "Guest house sescription",
+                //   widget: "text",
+                // },
+                // {
+                //   name: "guesthouseImage",
+                //   label: "Guest house image",
+                //   widget: "string",
+                // },
               ],
             },
           ],
@@ -212,4 +113,5 @@ const config = {
     },
   ],
 };
+
 export default config;

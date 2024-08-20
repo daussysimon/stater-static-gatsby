@@ -2,6 +2,9 @@ import CMS from "@staticcms/core";
 import React, { useEffect } from "react";
 import config from "./config";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBicycle } from "@fortawesome/free-solid-svg-icons";
+
 import "@staticcms/core/dist/main.css";
 
 const CMSView = () => {
@@ -10,6 +13,10 @@ const CMSView = () => {
       CMS.init({ config });
 
       CMS.registerPreviewStyle("/styles/content.module.css");
+
+      CMS.registerIcon("bikes", () => (
+        <FontAwesomeIcon icon={faBicycle} size="lg" />
+      ));
 
       CMS.registerAdditionalLink({
         id: "events",
@@ -25,6 +32,20 @@ const CMSView = () => {
   return (
     <>
       <Head />
+      <style jsx="true" global="true">{`
+        html,
+        body {
+          height: 100%;
+        }
+        .CMS_Editor_content-wrapper {
+          margin: 60px;
+        }
+
+        a:active,
+        a:hover {
+          color: unset;
+        }
+      `}</style>
       <body></body>
     </>
   );

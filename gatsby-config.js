@@ -13,6 +13,7 @@ module.exports = {
     "gatsby-plugin-sass",
     "gatsby-plugin-image",
     "gatsby-plugin-sitemap",
+    "gatsby-plugin-fontawesome",
     {
       resolve: "gatsby-plugin-manifest",
       options: {
